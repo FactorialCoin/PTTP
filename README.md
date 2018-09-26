@@ -25,7 +25,7 @@ Macintosh Install Pack (perl included):
 
 GitHub Install:
 
-download the Domero Perl base from https://github.com/FactorialCoin/base/
+Download the Domero Perl base from https://github.com/FactorialCoin/base/
 put perl/site/lib into your Perl's /site/lib directory.
 
 May the PTTP take you down the rabbithole, say hello to Alice from me!

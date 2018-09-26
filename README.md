@@ -27,6 +27,7 @@ GitHub Install:
 
 Download the Domero Perl base from https://github.com/FactorialCoin/base/
 put perl/site/lib into your Perl's /site/lib directory.
+Dowload the PTTP Wallet and/or Node from this github repository and start them with perl. 
 
 May the PTTP take you down the rabbithole, say hello to Alice from me!
 

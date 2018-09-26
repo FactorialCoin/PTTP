@@ -118,7 +118,7 @@ var discon=0;
     }
     socket = new WebSocket(wserver);
     socket.onopen = function() {
-      chatout("** Connected to the WebSocket Server");
+      chatout("** Connected to the local WebSocket Server");
       connected=1; beenconnected=1;
       socket.send('init');
       document.getElementById('powerbutton').style.background='rgba(127,255,127,0.6)';
@@ -221,9 +221,9 @@ var discon=0;
     }
   }
   function start() {
-    document.getElementById('wallets').innerHTML='';
   	connect();
-    document.getElementById('body').style.backgroundImage="url(image/fccbg.png)";
+    document.getElementById('body').style.backgroundImage="url(image/pttpbg.png)";
+    document.getElementById('transoutbox').style.backgroundImage="url(image/pttpcoin.gif)";
     document.getElementById('graybg').style.visibility='hidden';
     document.getElementById('refresh').style.visibility='hidden';
     $AUTOSTART
@@ -656,7 +656,7 @@ var discon=0;
       cf.removeChild(list[i])
     }
   	document.getElementById('amount').value='0.00000000';
-  	document.getElementById('fee').value='0.5';
+  	document.getElementById('fee').value='1.1';
   	document.getElementById('to').value="";
   	document.getElementById('transtotal').innerHTML='0.00000000';
   	document.getElementById('adrbook').selectedIndex=0;

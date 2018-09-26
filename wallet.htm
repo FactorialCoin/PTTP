@@ -5,7 +5,7 @@
 <html>
 
   <head>
-    <title>FCC Private Wallet</title>
+    <title>PTTP Private Wallet</title>
     <meta name="description" content="Manage your private wallet" />
     <meta name="author" content="(C) 2018, Chaosje, Domero, Groningen." />
     <meta name="copyright" content="(C) 2018, Chaosje, Domero, Groningen." />
@@ -20,7 +20,7 @@
   <body id='body' onload="start()">
 
     <div id="graybg"></div>
-    <div id="refresh">The FCC Private server is offline.<br /><br />Please refresh the server and/or this site!</div>
+    <div id="refresh">The PTTP Private server is offline.<br /><br />Please refresh the server and/or this site!</div>
     
     <div id="transconfirm">Confirm Transaction
       <div class="tctit" style="top: 50px;">From</div>
@@ -76,7 +76,7 @@
 
       <div id="activefront">
         <div id="wallet" onclick="copywal()" ></div>
-        <img id="fcc" src="image/fccico.png" height="36" />
+        <img id="pttp" src="image/pttpico.png" height="36" />
         <img id="pickaxe" src="image/pickaxe.gif" />
         <div id="balance"></div>
         <div id="walnamediv">
@@ -105,7 +105,7 @@
 	        <div class="tfnt" style="top: 43px;">Amount</div>
 	        <input id="amount" onfocus="document.getElementById('amount').select()" onkeyup="checkdigit(event,'amount',1)" value="0.00000000" />
 	        <div class="tfnt" style="left: 140px; width: 40px; top: 43px;">Fee</div>
-  	      <input id="fee" onfocus="document.getElementById('fee').select()" onkeyup="checkdigit(event,'fee',1)" value="0.5" />
+  	      <input id="fee" onfocus="document.getElementById('fee').select()" onkeyup="checkdigit(event,'fee',1)" value="1.1" />
   	      <div class="tfnt" style="left: 200px; top: 66px; width: 12px">%</div>
  	        <div class="tfnt" style="top: 93px;">To</div>
 	        <input id="to" onfocus="document.getElementById('to').select()" onkeyup="checkhex(event,'to')" onpaste="checkhexpaste('to')" />
@@ -117,7 +117,7 @@
 	        <div id="transoutbox"></div>
 	        <div class="tfnt" style="width: 130px; bottom: 40px;">Change wallet address</div>
 	        <select id="change"></select>
-	        <img id="ttot" src="image/fccico.png" height="24" />
+	        <img id="ttot" src="image/pttpico.png" height="24" />
 	        <div id="transtotal">0.00000000</div>
 	        <div id="transbut" onclick="transfer()" class="selbut greenbut muis"> &nbsp;Transfer &#x2192;</div>
     	  </div>
@@ -137,7 +137,7 @@
 or Scroll with the mouse wheel
 to zoom in and out">$ZOOMOPTION</select>
       </div>
-      <div id="status">Welcome to FCC Private Wallet v1.0</div>
+      <div id="status">Welcome to PTTP Private Wallet v1.0</div>
     </div>
     
     <div id="passbox" class="centbox loginbox">

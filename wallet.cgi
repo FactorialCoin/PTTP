@@ -12,6 +12,7 @@ use gfio;
 use gserv 4.1.1 qw(wsmessage broadcastfunc);
 use gclient 7.2.2;
 use FCC::global;
+setcoin('PTTP');
 use FCC::miner;
 use FCC::wallet 2.01 qw(validwallet validwalletpassword walletisencoded newwallet loadwallets savewallet savewallets);
 use FCC::leaf 2.01 qw(startleaf leafloop closeleaf);
@@ -35,23 +36,21 @@ my $MINERWALLET="";
 my $POWERDOWN=0;
 my $MINERDISCON=0;
 
-my $VERSION = "010104";
+my $VERSION = "010201";
 
 ################################################################################
 ###### Use the file trusted.nodes to force connecting to trusted nodes #########
-
 my $TRUSTEDNODES=(-e "trusted.nodes" ? decode_json(gfio::content("trusted.nodes")) : []);
 my $FORCENODE; if($#$TRUSTEDNODES>-1){ $FORCENODE=$TRUSTEDNODES->[int(rand()*(1+$#$TRUSTEDNODES))] }
-
+###### Use the file pool.nodes to force connecting to trusted miningpool #######
 my $TRUSTEDPOOLS=(-e "pool.nodes" ? decode_json(gfio::content("pool.nodes")) : []);
 my $MINERNODE; if($#$TRUSTEDPOOLS>-1){ $MINERNODE=$TRUSTEDPOOLS->[int(rand()*(1+$#$TRUSTEDPOOLS))] }
-
 ################################################################################
 # Local Wallet Listen Port
 my $PORT =
   $ARGV[0] && $ARGV[0] =~ /[0-9]+/ ? $ARGV[0] : 
   -e "wallet.port" ? gfio::content("wallet.port") : 
-  5115;
+  9611;
 ################################################################################
 # Local Wallet Chat Nick & Ident
 my $NICKIDENT;
@@ -93,8 +92,8 @@ sub sockquit {
 
 sub versionCheck {
   my $github={base => "https://raw.githubusercontent.com/FactorialCoin/base/master"};
-  $github->{dev}="$github->{base}/FCC/Wallet/wallet.dev";
-  my $fil = ['wallet.cgi','wallet.js','wallet.htm','wallet.css','image/clipboard.png','image/del.png','image/favicon-16.png','image/favicon-32.png','image/fccico.png','image/fcclogo.png','image/pause.png','image/pickaxe.gif','image/powerdown.png','image/save.png','image/start.png'];
+  $github->{dev}="$github->{base}/FCC/Wallet/wallet.pttp";
+  my $fil = ['wallet.cgi','wallet.js','wallet.htm','wallet.css','image/clipboard.png','image/del.png','image/favicon-16.png','image/favicon-32.png','image/pttpbg.png','image/pttpico.png','image/pttplogo.png','image/pause.png','image/pickaxe.gif','image/powerdown.png','image/save.png','image/start.png'];
   my $fccversion = get("$github->{base}/version.txt"); $fccversion=~s/[^0-9]//gs;
   print "** Github FCC base Version is: $fccversion\n";
   my $version = get("$github->{dev}/version.txt"); $version=~s/[^0-9]//gs;
@@ -161,7 +160,7 @@ sub killleaves {
 sub killserver {
   if ($SERVER) {
     broadcastfunc($SERVER,\&killleaves,$_[0]);
-    print "Terminating FCC Local Wallet Server .. \n";
+    print "Terminating $COIN Local Wallet Server .. \n";
     $SERVER->quit($_[0]);
   }
   if ($MINER) { $MINER->closeleaf() }
@@ -181,9 +180,9 @@ sub quitleaf {
 }
 
 initfcc();
-print "Starting FCC localhost Wallet Server .. \n";
+print "Starting $COIN localhost Wallet Server .. \n";
 $SERVER=gserv::init(\&handle,\&loop);
-$SERVER->{name}="FCC Local Wallet Server v1.0";
+$SERVER->{name}="$COIN Local Wallet Server v1.0";
 $SERVER->{server}{port}=$PORT;
 $SERVER->{allowedip}=['127.0.0.1'];
 $SERVER->{verbose}=0;
@@ -226,7 +225,7 @@ sub loopclient {
             print " ! Error starting miner - $MINER->{error}\n"
           } else {
             $MINER->{client}=$client;
-            print " * Miner sucessfully started .. may the FCC be with you ;)\n"
+            print " * Miner sucessfully started .. may the $COIN be with you ;) $client->{fcc}{leafip},$client->{fcc}{leafport}\n"
           }
         }
       }
@@ -239,7 +238,7 @@ sub loopclient {
 
 sub serverloop {
   if (!$WEBSITEINIT) {
-    print " * Opening wallet website\n";
+    print " * Opening $COIN wallet website\n";
     eval("open_browser(\"http://127.0.0.1:$PORT\");");
     $WEBSITEINIT=1
   }
@@ -262,7 +261,7 @@ sub serverloop {
       my $done=$MINEDATA->{hashtot}+=$MINEDATA->{fhash};
       $done=int (10000 * $done / $MINEDATA->{diff}) / 100;
       if ($MINER->{client}) { wsmessage($MINER->{client},"miner Speed: $hr Fhash/sec ($done %)") }
-      print " Speed: $hr Fhash/sec ($done %) $MINER->{client} \r";
+      print " Speed: $hr Fhash/sec ($done %) \r";
       $MINEDATA->{fhash}=0
     }
   }
@@ -290,7 +289,7 @@ sub challenge {
       $MINEDATA->{hintpos}=0;
       $MINEDATA->{tryhint}=substr($MINEDATA->{hints},0,1);
       if ($MINER->{client}) { wsmessage($MINER->{client},"miner Trying suggestion $MINEDATA->{tryhint}") }
-      print " * Trying suggestion $MINEDATA->{tryhint}     \n";
+      print " * $COIN Trying suggestion $MINEDATA->{tryhint}     \n";
     } else {
       $MINEDATA->{tryhint}=""
     }
@@ -311,7 +310,6 @@ sub mineloop {
   if (minehash($MINEDATA->{coincount},$suggest) eq $MINEDATA->{challenge}) {
     # found the solution!
     if($MINEDATA->{init}){
-      my $solhash=solhash($MINERWALLET,$suggest);
       print " **!! SOLUTION !!** $suggest\n";
       $MINER->solution($MINERWALLET,$suggest);
     }else{
@@ -344,7 +342,7 @@ sub mineloop {
           }
         }
       } else {
-        print "Error.. mined all possibilities\n";
+        print "Error.. mined all possibilities $MINEDATA->{hints}, $MINEDATA->{diff}\n";
         if ($MINER->{client}) { wsmessage($MINER->{client},"miner Error.. mined all possibilities :-(") }
       }
     }
@@ -352,19 +350,19 @@ sub mineloop {
 }
 
 sub initfcc {
-  print "Initialising FCC Private Wallet Server ..\n";
+  print "Initialising $COIN Private Wallet Server ..\n";
   if (!$FORCENODE) {
-    print "Connecting to FCC-Server .. \n";
+    print "Connecting to $COIN-Server $FCCSERVER .. \n";
     my $req=gclient::website("$FCCSERVER/?fcctime");
     if ($req->{error}) {
       print "Error connecting: $req->{error}\n"; exit
     }
     fcctime($req->{content});
-    print "FCC-Time set to $FCCTIME\n";
+    print "$COIN-Time set to $FCCTIME\n";
     $req=gclient::website("$FCCSERVER/?nodelist");
     @NODES=split(/ /,$req->{content}); my $nc=1+$#NODES;
     if (!$nc) {
-      print "The core is exhausted.. quitting.\n"; exit
+      print "The $COIN core is exhausted.. quitting.\n"; exit
     }
   }
 }
@@ -373,7 +371,7 @@ sub init {
   my ($client) = @_;
   if ($client->{fcc}{connected}) { return }
   $client->{fcc}={};
-  status($client,"FCC-Time offset to local clock = $FCCTIME seconds");
+  status($client,"$COIN-Time offset to local clock = $FCCTIME seconds");
   if ($FORCENODE) {
     status($client,"Forcably using $FORCENODE\n")
   } else {
@@ -388,7 +386,7 @@ sub init {
 sub initwallet {
   $WLIST=loadwallets($PASS);
   if ($#{$WLIST}<0) {
-    print "Creating new wallet\n";
+    print "Creating new $COIN wallet\n";
     my $wallet=newwallet("Main wallet");
     savewallet($wallet,$PASS);
     push @$WLIST,$wallet
@@ -398,14 +396,14 @@ sub initwallet {
 
 sub addwallets {
   my ($client) = @_;
-  print "Initialising wallets and addressbook\n";
+  print "Initialising $COIN wallets and addressbook\n";
   status($client,"Initialising wallets and addressbook");
   foreach my $wallet (@$WLIST) {
     my $name=""; if ($wallet->{name}) { $name=$wallet->{name} }
     wsmessage($client,"addwallet $wallet->{wallet} $name")
   }
-  if (-e 'addressbook.fcc') {
-    my $cont=gfio::content('addressbook.fcc');
+  if (-e "addressbook.$FCCEXT") {
+    my $cont=gfio::content("addressbook.$FCCEXT");
     my @lines=split(/\n/,$cont);
     foreach my $line (@lines) {
       wsmessage($client,"adrbook $line")
@@ -415,7 +413,7 @@ sub addwallets {
 
 sub refreshnodelist {
   if ($FORCENODE) { return }
-  print " * Refreshing node-list\n";
+  print " * Refreshing $COIN node-list\n";
   my $req=gclient::website("$FCCSERVER/?nodelist");
   @NODES=split(/ /,$req->{content}); my $nc=1+$#NODES;
   if (!$nc) {
@@ -440,7 +438,7 @@ sub connecttonode {
   }else{
     ($nip,$nport) = ($ip,$port)
   }
-  status($client,"Connecting to node $ip:$port .. ");
+  status($client,"Connecting to $COIN node $ip:$port .. ");
   $NODENR++; if ($NODENR>$#NODES) { $NODENR=0 }
   $client->{fcc}{leaf}=startleaf($ip,$port,\&slavecall);
   if ($client->{fcc}{leaf}{error}) {
@@ -538,10 +536,10 @@ sub handle {
     } elsif ($data =~ /^adrbook ([^\s]+) (.+)$/) {
       my $wallet=$1; my $name=$2;
       if (validwallet($wallet)) {
-        if (-w 'addressbook.fcc') {
-          gfio::append('addressbook.fcc',"\n$wallet $name")
+        if (-w "addressbook.$FCCEXT") {
+          gfio::append("addressbook.$FCCEXT","\n$wallet $name")
         } else {
-          gfio::create('addressbook.fcc',"$wallet $name")
+          gfio::create("addressbook.$FCCEXT","$wallet $name")
         }
         status($client,"Added '$name' to addressbook");
         wsmessage($client,"adrbook $wallet $name")
@@ -551,7 +549,7 @@ sub handle {
     } elsif ($data =~ /^chadrbook ([^\s]+) (.+)$/) {
       my $wallet=$1; my $name=$2;
       if (!defined $name) { $name='' }
-      my $data=gfio::content('addressbook.fcc');
+      my $data=gfio::content("addressbook.$FCCEXT");
       my @alist=split(/\n/,$data); my @out=();
       foreach my $entry (@alist) {
         my ($wal,@nlist) = split(/ /,$entry);
@@ -561,10 +559,10 @@ sub handle {
           push @out,$entry
         }
       }
-      gfio::create('addressbook.fcc',join("\n",@out))
+      gfio::create("addressbook.$FCCEXT",join("\n",@out))
     } elsif ($data =~ /^deladrbook (.+)$/) {
       my $wallet=$1;
-      my $data=gfio::content('addressbook.fcc');
+      my $data=gfio::content("addressbook.$FCCEXT");
       my @alist=split(/\n/,$data); my @out=();
       foreach my $entry (@alist) {
         my ($wal,@nlist) = split(/ /,$entry);
@@ -572,7 +570,7 @@ sub handle {
           push @out,$entry
         }
       }
-      gfio::create('addressbook.fcc',join("\n",@out))
+      gfio::create("addressbook.$FCCEXT",join("\n",@out))
     } elsif ($data =~ /^checktrans ([^\s]+) ([^\s]+) (.+)/) {
       my $wallet=$1; my $amount=$2; my $fee=$3;
       if (!validwallet($wallet)) {
@@ -658,7 +656,7 @@ sub handle {
     my @out=(gserv::httpresponse(200));
     push @out,"Host: ".$SERVER->{server}{host}.":".$SERVER->{server}{port};
     push @out,"Access-Control-Allow-Origin: *";
-    push @out,"Server: FCC-Private Wallet Server 1.0";
+    push @out,"Server: $COIN-Private Wallet Server 1.0";
     push @out,"Date: ".fcctimestring();
     if ($uri eq '/') {
       burstfile($client,'wallet.htm','text/html',1,@out);
@@ -752,12 +750,12 @@ sub handlecall {
     } elsif (($command eq 'disconnect') || ($command eq 'terminated')) {
       $MINERDISCON=1;
       $MINING=0;
-      status($client,"<span style=\"color: red; font-weight: bold\">Disconnected from node.. Reconnecting to the FCC-core..</span>");
+      status($client,"<span style=\"color: red; font-weight: bold\">Disconnected from node.. Reconnecting to the $COIN-core..</span>");
       $client->{fcc}{connectnode}=1;
       refreshnodelist();
     } elsif ($command eq 'response') {
       $client->{fcc}{leafready}=1;
-      status($client," * Connected to node $data->{node} running FCC v$data->{version}")
+      status($client," * Connected to node $data->{node} running $COIN v$data->{version}")
     } elsif ($command eq 'balance') {
       my $balance=fccstring($data->{balance}/100000000);
       wsmessage($client,"balance $balance $data->{wallet}")
@@ -822,9 +820,9 @@ sub slaveminercall {
   } elsif ($command eq 'solution') {
     my $mstr=time." solution $MINEDATA->{coincount} $MINEDATA->{diff}\n";
     if (-e $log) { gfio::append($log,$mstr) } else { gfio::create($log,$mstr) }
-    print " *** Found solution!! Earned FCC ".extdec($MINEDATA->{reward} / 100000000)." ***\n";
+    print " *** Found solution!! Earned $COIN ".extdec($MINEDATA->{reward} / 100000000)." ***\n";
     if ($MINER->{client}) {
-      wsmessage($MINER->{client},"miner <span style=\"color: darkgreen; font-weight: bold\">Found solution!! Earned FCC ".extdec($MINEDATA->{reward} / 100000000)."</span>");
+      wsmessage($MINER->{client},"miner <span style=\"color: darkgreen; font-weight: bold\">Found solution!! Earned $COIN ".extdec($MINEDATA->{reward} / 100000000)."</span>");
       my $ctm=gettimeofday();
       push @{$MINER->{client}{fcc}{jobs}},{ command => 'balance', wallet => $MINERWALLET, time => $ctm }
     }

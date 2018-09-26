@@ -1,12 +1,13 @@
 
   body {
-    background: #f0f8ff;
+    background: rgb(34,34,34);
     background-size: 100% auto;
     background-position: 0px 0%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-blend-mode: normal;
     padding: 0; margin: 0;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
   }
   * {
     outline: none;
@@ -41,7 +42,7 @@
   	left: 0px; top: 0px;
     right: 0px; bottom: 0px; 
   	margin: auto;
-  	background: #a0a0a0;
+  	background: rgba(34,34,34,0.9);
     opacity: 0.8;
     z-index: 50;
     visibility: hidden;
@@ -57,8 +58,7 @@
   	padding-top: 60px;
   	background: black;
   	color: white;
-  	font-family: Verdana;
-  	font-size: 26px;
+  	font-size: 22px;
   	text-align: center;
   	z-index: 200;
   	visibility: hidden;
@@ -76,8 +76,7 @@
     overflow: none;
     border-radius: 15px;
     border: 1px ridge #4589a0;
-    font-family: verdana;
-    font-size: 20px;
+    font-size: 18px;
     color: #004;
     box-shadow: 6px 6px 3px #888888;
     background: #f0f4ff;
@@ -98,7 +97,7 @@
     text-align: right;
     padding-right: 7px;
     font-family: tahoma;
-    font-size: 18px;
+    font-size: 16px;
     color: #004;
   }
   .ival {
@@ -108,8 +107,7 @@
     background: #f0fdff;
     color: #005;
     width: 100%;
-    font-family: arial;
-    font-size: 16px;
+    font-size: 14px;
   }
   .tdr {
     text-align: right;
@@ -127,15 +125,13 @@
     border-color: #8090b0;
     color: #f0f3ff;
     background: #607090;
-    font-family: verdana;
     font-weight: bold;
   }
   .cancbut {
   	width: 110px;
   }
   .errtxt {
-    font-family: tahoma;
-    font-size: 12px;
+    font-size: 10px;
     color: #800;
     font-weight: bold;
   }
@@ -145,13 +141,11 @@
   	left: 0; top: 0; right: 0px; height: 215px;
    	margin: auto;
   	overflow: none;
-    background: #0073a3;
-  	color: black;
+    color: black;
   	padding: 7px;
-  	border: 3px ridge #205090;
-  	font-size: 13px;
-  	font-family: Verdana;
-    background-image:url(image/fccwallet.png);
+  	border: 3px ridge rgb(51,51,51);
+  	font-size: 11px;
+    background-image:url(image/pttpwallet.png);
     background-size: auto 164px;
     background-position: -19px 64px;
     background-repeat: no-repeat;
@@ -166,7 +160,7 @@
   	background: rgba(255,0,0,0.5);
   	color: black;
   	padding: 7px;
-  	border: 3px ridge #205090;
+  	border: 3px ridge rgb(51,51,51);
     border-radius: 64px;
   }
   #powerimage {
@@ -179,12 +173,11 @@
     top: 96px; left: 6px; right: 6px; bottom: 32px;
    	margin: auto;
   	overflow: hidden;
-  	background: linear-gradient(to right, rgba(66,115,166,0.4), rgba(35,35,110,0.5));
+  	background: linear-gradient(to right, rgba(134,134,134,0.3), rgba(35,35,34,0.6));
   	color: black;
   	padding: 7px;
-  	border: 3px ridge #205090;
-  	font-size: 13px;
-  	font-family: Verdana;
+  	border: 3px ridge rgb(51,51,51);
+  	font-size: 11px;
     border-top-left-radius: 64px;
     border-bottom-left-radius: 64px;
   }
@@ -194,12 +187,11 @@
     left: 40px;
     top: 28px;
     width:320px;
-    border:1px solid rgba(0,0,0,0);
-    font-family: Arial;
-    font-size: 32px;
+    border:1px solid rgba(34,34,34,0.1);
+    font-size: 28px;
     font-weight: bolder;
     text-align:right;
-    color: #102080;
+    color: #ff7;
     text-shadow: 0px 0px 6px rgba(155,255,255,0.8);
   }
 
@@ -209,25 +201,25 @@
     top: 11px;
     height: 20px;
     right: 42px;
-    font-size: 17px;
+    font-size: 15px;
   }
   #walname {
     position: absolute;
     left: 0px;
     top: 0px;
     height: 20px;
-    font-size: 17px;
+    font-size: 15px;
     visibility: hidden;
   }
   #wallet {
     position: absolute;
     left: 415px; top: 40px;
     right: 32px; bottom: 8px;
-    font-family: "Lucida Console";
-    font-size: 24px;
-    line-height: 24px;
+    font-family: "Courier New";
+    font-size: 20px;
+    line-height: 20px;
     font-weight: bolder;
-    color: #101070;
+    color: #eee;
     word-break: break-all;
     overflow-y: hidden;
     text-shadow: 0px 0px 3px rgba(200,250,200,0.5);
@@ -249,7 +241,7 @@
   	visibility: hidden;
   }
 
-  #fcc {
+  #pttp {
   	position: absolute;
   	left: 375px;
   	top: 26px;
@@ -261,16 +253,15 @@
   	right: 4px;
   	width: 16px;
   	top: 4px;
-  	font-size: 18px;
+  	font-size: 17px;
   	visibility: hidden;
   }
   #copied {
   	position: absolute;
-  	left: 72px; top: 70px;
-  	font-family: arial;
-  	font-size: 16px;
+  	left: 222px; top: 70px;
+  	font-size: 15px;
   	font-weight: bold;
-  	color: #004000;
+  	color: #eee;
   }
 
 
@@ -281,8 +272,8 @@
     margin: auto;
     overflow: auto hidden;
     padding: 0;
-    border: 3px ridge #205090;
-    background: linear-gradient(to right, rgba(55,55,130,0.3), rgba(66,115,166,0.5));
+    border: 3px ridge rgb(51,51,51);
+    background: linear-gradient(to right, rgba(34,34,34,0.9), rgba(51,51,51,0.5));
     border-top-left-radius: 64px;
     border-bottom-left-radius: 64px;
   }
@@ -293,8 +284,8 @@
     margin: auto;
     overflow: auto hidden;
     padding: 0;
-    border: 3px ridge #205090;
-    background: linear-gradient(to right, rgba(55,55,130,0.3), rgba(66,115,166,0.5));
+    border: 3px ridge rgb(51,51,51);
+    background: linear-gradient(to right, rgba(34,34,34,0.9), rgba(51,51,51,0.5));
     border-radius: 64px;
   }
   #startminer {
@@ -312,6 +303,7 @@
     left: 9px; top: 8px; right: 96px; height: 84px;
     margin: auto;
     overflow: auto hidden;
+    color: #ff0;
     padding: 0;
   }
 
@@ -326,9 +318,8 @@
     font-weight: bolder;
     padding-left:3px;
     padding-top:1px;
-    color: black;
-    background:white;
-    border: 1px inset #205090;
+    background:rgb(151,151,151);
+    border: 1px inset rgb(34,34,34);
   }
 
   #mineoutput {
@@ -340,7 +331,6 @@
     font-family: Courier New;
     font-size: 9px;
     font-weight: bolder;
-    color: #000020;  
   }
 
   #minediff {
@@ -356,7 +346,7 @@
     position: absolute;
     left: 580px; top: 0px;
     right: 2px; bottom: -1px;
-    border: 1px inset #205090;
+    border: 1px inset rgb(34,34,34);
   }
 
   #cointable {
@@ -384,7 +374,7 @@
     text-align:right;
     padding-right:3px;
     white-space:nowrap;
-    border:1px solid white;
+    border:1px solid rgba(151,151,151);
   }
   #cointable tr:first-child {
     padding-top:1px;
@@ -424,7 +414,7 @@
     right:10px;
     top: 0px;
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bolder;
     color: white;
     line-height: 27px;
@@ -486,8 +476,8 @@
     position: absolute;
     top: 0px;
     height: 22px;
-    background: #b3b3b9;
-    color: black;
+    background: rgba(34,34,34,0.7);
+    color: #eee;
     border-left: 1px solid #eeeeee;
     border-top: 1px solid #eeeeee;
     border-bottom: 2px solid #222222;
@@ -498,18 +488,17 @@
     padding-bottom: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 18px;
-    font-family: Tahoma;
+    font-size: 15px;
     text-align: center;
-    text-shadow: -1px -1px white;
+    text-shadow: -1px -1px rgb(34,34,34);
   }
   .belowbut {
     position: absolute;
     top: 167px;
     height: 22px;
     margin: auto;
-    background: #b3b3b9;
-    color: black;
+    background: rgba(34,34,34,0.7);
+    color: #eee;
     border-left: 1px solid #eeeeee;
     border-top: 1px solid #eeeeee;
     border-bottom: 2px solid #222222;
@@ -520,10 +509,9 @@
     padding-bottom: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 18px;
-    font-family: Tahoma;
+    font-size: 15px;
     text-align: center;
-    text-shadow: -1px -1px white;
+    text-shadow: -1px -1px rgb(34,34,34);
   }
 
   .bottombut {
@@ -531,7 +519,7 @@
     top: 172px;
     height: 22px;
     margin: auto;
-    background: #b3b3b9;
+    background: rgba(34,34,34,0.7);
     color: black;
     border-left: 1px solid #eeeeee;
     border-top: 1px solid #eeeeee;
@@ -543,8 +531,7 @@
     padding-bottom: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 18px;
-    font-family: Tahoma;
+    font-size: 15px;
     text-align: center;
     text-shadow: -1px -1px white;
   }
@@ -553,7 +540,7 @@
   .selectbut {
     color: white;
     cursor: default;
-    background: #205090;
+    background: rgba(134,134,134,0.7);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
   }
 
@@ -563,11 +550,10 @@
    	margin: auto;
   	overflow: auto;
   	padding: 7px;
-  	border: 3px ridge #205090;
-  	background: white;
-  	color: black;
-  	font-size: 18px;
-  	font-family: Verdana;
+  	border: 3px ridge rgb(51,51,51);
+    background: rgb(34,34,34,0.6);
+    color:#eee;
+  	font-size: 17px;
   }
   .space {
     width: 100%; height: 4px;
@@ -582,8 +568,8 @@
   .iwal {
     position: absolute;
     left:0px; top:0px; right: 24px;
-    font-family: "Lucida Console";
-    font-size: 11px;
+    font-family: "Courier New";
+    font-size: 10px;
     line-height: 9px;
     font-weight: bolder;
     color: #2060a0;
@@ -608,11 +594,10 @@
     overflow-x: hidden;
     overflow-y: auto;
     padding: 7px;
-    border: 3px ridge #205090;
-    background: white;
-    color: black;
-    font-size: 18px;
-    font-family: Verdana;
+    border: 3px ridge rgb(51,51,51);
+    background: rgb(34,34,34,0.6);
+    color:#eee;
+    font-size: 17px;
   }
 
 
@@ -620,89 +605,99 @@
   	position: absolute;
   	top: 3px; left: 6px; right: 6px;
     min-height: 420px; bottom: 6px;
-  	background: #f0f0f0;
   }
   .tfnt {
   	position: absolute;
   	width: 80px;
   	text-align: left;
-  	font-family: verdana;
-  	font-size: 13px;
+  	font-size: 11px;
     font-weight: bolder;
-  	color: black;
+    color:#eee;
   }
   .tafnt {
   	position: absolute;
-  	font-family: verdana;
-  	font-size: 18px;
-  	color: black;
+  	font-size: 17px;
+    color:#eee;
   }
   #from {
   	position: absolute;
   	top: 18px; left: 5px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 11px;
-  	color: #000080;  	
+    color:#eee;
   }
   #amount {
   	position: absolute;
   	top: 60px; left: 5px;
   	width: 120px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	padding: 3px;
-  	font-size: 18px;
-  	color: #000040;
-  	border: 1px blue solid;
+    font-size: 16px;
+    line-height: 20px;
+    background: rgb(151,151,151);
+    color:#ff7;
+  	border: 1px rgb(34,34,34) solid;
   }
   #fee {
   	position: absolute;
   	top: 60px; left: 140px;
   	width: 50px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	padding: 3px;
-  	font-size: 18px;
-  	color: #000040;
-  	border: 1px blue solid;
+    font-size: 16px;
+    line-height: 20px;
+    background: rgb(151,151,151);
+    color:#ff7;
+  	border: 1px rgb(34,34,34) solid;
   }
   #to {
   	position: absolute;
   	top: 110px; left: 5px;
-  	width: 420px;
-  	font-family: "Lucida Console";
+  	width: 447px;
+  	font-family: "Courier New";
   	padding: 3px;
-  	font-size: 16px;
-  	color: black;
-  	border: 1px blue solid;
+    font-size: 16px;
+    line-height: 20px;
+    background: rgb(151,151,151);
+    color:#ff7;
+  	border: 1px rgb(34,34,34) solid;
   }
   #adrbook {
     position: absolute;
     top: 140px; left: 5px; width: 90px;
     height: 28px;
-    background: #603000;
-    font-family: Tahoma;
+    background: rgb(34,34,34);
     font-size: 16px;
-    color: white;
+    line-height: 20px;
+    background: rgb(151,151,151);
+    color:#ff7;
+    border: 1px rgb(34,34,34) solid;
     padding-left: 3px;
   }
   #newadrbook {
   	position: absolute;
   	top: 140px; left: 95px;
   	width: 170px;
-  	font-family: "Verdana";
   	padding: 3px;
-  	font-size: 18px;
-  	color: black;
-  	border: 1px #603000 solid;
+  	font-size: 17px;
+    background: rgb(151,151,151);
+    color:#ff7;
+  	border: 1px rgb(34,34,34) solid;
   }
   #saveadrbook {
     position: absolute;
-    top: 136px; left: 270px;
+    top: 136px; left: 272px;
+    height: 35px;
   }
   #addtransbut {
     position: absolute;
-    top: 140px; left: 310px;  width: 140px;
-    font-size: 13px; padding:3px 5px;
+    top: 140px; left: 307px;  width: 140px;
+    font-size: 12px;
+    padding:5px 5px;
     font-variant: small-caps;
+    border-width: 2px;
+    border-color: rgb(54,54,54);
+    border-radius: 6px;
   }
   #transerr {
     position: absolute;
@@ -711,8 +706,7 @@
     max-height: 32px;
     height:32px;
     overflow:none auto;
-    font-family: Verdana;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
     color: red;
     font-weight: bolder;
@@ -722,7 +716,14 @@
     left: 3px; top: 200px; right: 3px; min-height:48px; bottom: 70px;
     margin: auto;
     overflow: auto;
-    background: #e0e0e0;
+    background: rgb(0,0,0);
+    background-size: auto 75%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-origin: border-box;
+    background-blend-mode: normal;
+    border: 1px inset rgb(34,34,34);
     padding: 3px;
   }
   #change {
@@ -730,22 +731,21 @@
   	bottom: 40px; left: 140px; width: 330px;
   	height: 18px;
   	background: #003060;
-  	font-family: Tahoma;
-  	font-size: 12px;
+  	font-size: 11px;
   	color: white;
   	padding-left: 3px;  	
   }
   #transbut {
     position: absolute;
     right: 20px; bottom: 3px;
-    font-size: 13px; padding:3px 10px;
+    font-size: 12px; padding:3px 10px;
     font-variant: small-caps;
   }
 
   .transoutitem {
   	position: relative;
   	left: 0; right: 0; height: 50px;
-  	border-bottom: 1px solid #800000;
+  	border-bottom: 1px solid rgb(34,34,34);
   	margin-bottom: 3px;
   }
   .walletout {
@@ -756,29 +756,29 @@
     overflow: hidden;
   	text-overflow: clip;
   	color: #600000;
-  	font-family: "Lucida Console";
-  	font-size: 13px;
+  	font-family: "Courier New";
+  	font-size: 11px;
   }
   .totalout {
   	position: absolute;
   	right: 10px; top: 30px;
     color: #a00000;
-  	font-family: "Lucida Console";
-  	font-size: 20px;
+  	font-family: "Courier New";
+  	font-size: 19px;
   }
   .amountout {
   	position: absolute;
   	left: 10px; top: 20px;
     color: #900000;
-  	font-family: "Lucida Console";
-  	font-size: 14px;
+  	font-family: "Courier New";
+  	font-size: 12px;
   }
   .feeout {
   	position: absolute;
   	left: 10px; top: 35px;
     color: #900000;
-  	font-family: "Lucida Console";
-  	font-size: 14px;
+  	font-family: "Courier New";
+  	font-size: 12px;
   }
   .delout {
   	position: absolute;
@@ -792,7 +792,7 @@
   	position: absolute;
   	left: 45px; bottom: 5px;
     color: #a00000;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 20px;
   }
   #transconfirm {
@@ -801,8 +801,7 @@
   	background: #f0fff0;
   	border: 3px blue solid;
   	z-index: 50;
-  	font-family: verdana;
-  	font-size: 26px;
+  	font-size: 23px;
   	font-weight: bold;
   	color: #000030;
   	padding-left: 15px;
@@ -813,21 +812,20 @@
   	position: absolute;
   	left: 30px; right: 30px;
   	border-bottom: 1px solid #000050;
-  	font-family: verdana;
-  	font-size: 22px;
+  	font-size: 20px;
   	color: #000090;
   }
   #tcfrom {
   	position: absolute;
   	left: 40px; top: 85px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 20px;
   	color: #000030;  	
   }
   #tcout {
   	position: absolute;
   	left: 40px; top: 165px; right: 30px; bottom: 220px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 14px;
   	color: #000030;
   	overflow: auto;
@@ -848,35 +846,35 @@
   	position: absolute;
   	top: 0px; right: 0px;
   	color: #a00000;
-  	font-size: 16px;
+  	font-size: 15px;
   }
   .tcoutfee {
   	position: absolute;
   	top: 22px; right: 0px;
   	color: #800000;
-  	font-size: 12px;
+  	font-size: 11px;
   }
   #tcchange {
   	position: absolute;
   	bottom: 142px; left: 40px; right: 30px;
   	color: #000060;
-  	font-size: 16px;
+  	font-size: 15px;
   }
   #tctotal {
   	position: absolute;
   	bottom: 75px; right: 30px;
   	color: #c00000;
-  	font-size: 24px;
+  	font-size: 22px;
   }
   #tcok {
   	position: absolute;
   	bottom: 15px; right: 230px;
-  	font-size: 22px;
+  	font-size: 20px;
   }
   #tccancel {
   	position: absolute;
   	bottom: 15px; right: 30px;
-  	font-size: 22px;
+  	font-size: 20px;
   }
 
 
@@ -900,23 +898,23 @@
     position: absolute;
     left: 2px; top: -2px; width: 100px;
     height:16px;
-    font-size:12px;
+    font-size:11px;
     line-height: 12px;
     cursor:text;
     background: white;
     color:black;
-    border:ridge 3px #205090;
+    border:ridge 3px rgb(34,34,34);
   }
   #identpass {
     position: absolute;
     left: 130px; top: -2px; width: 100px;
     height:16px;
-    font-size:12px;
+    font-size:11px;
     line-height: 12px;
     cursor:text;
     background: white;
     color:black;
-    border:ridge 3px #205090;
+    border:ridge 3px rgb(34,34,34);
   }
   #chatzoom {
     display: none;
@@ -929,7 +927,7 @@
     font-family: Courier New;
     text-align: right;
     cursor:pointer;
-    border:ridge 2px #205090;
+    border:ridge 2px rgb(34,34,34);
     border-bottom:0px;
   }
 
@@ -940,8 +938,8 @@
    	margin: auto;
   	overflow: hidden;
   	padding: 0;
-  	border: 3px ridge #205090;
-  	background: white;
+  	border: 3px ridge rgb(51,51,51);
+    background: rgba(51,51,51,0.3);
   }
 
   #chatcont {
@@ -963,11 +961,11 @@
     margin: auto;
     overflow: auto;
     padding: 7px;
-    border: 3px ridge #205090;
-    background: white;
-    color: black;
-    font-size: 13px;
-    font-family: "Lucida Console";
+    border: 3px ridge rgb(51,51,51);
+    background: rgb(34,34,34);
+    color:#eee;
+    font-size: 11px;
+    font-family: "Courier New";
   }
 
 
@@ -979,8 +977,7 @@
   	padding-right: 10px;
   	padding-top: 5px;
   	padding-bottom: 5px;
-  	font-family: Verdana;
-  	font-size: 24px;
+  	font-size: 22px;
   	font-weight: bold;
   	text-shadow: -1px -1px #ffffff;
   	text-align: center;
@@ -993,7 +990,7 @@
   	border-right: 2px solid #002200;
   	border-radius: 12px;
   	color: #50c090;
-  	background: #208030;
+  	background: #20803070;
   }
   .redbut {
   	border-left: 2px solid #ffaeae;
@@ -1002,7 +999,7 @@
   	border-right: 2px solid #220000;
   	border-radius: 12px;
   	color: #c05090;
-  	background: #802030;
+  	background: #80203070;
   }
   .bluebut {
   	border-left: 2px solid #aeaeff;
@@ -1011,7 +1008,7 @@
   	border-right: 2px solid #000022;
   	border-radius: 12px;
   	color: #5090c0;
-  	background: #203080;
+  	background: #20308070;
   }
 
 
@@ -1028,8 +1025,7 @@
   	background: #f0fff0;
   	border: 3px blue solid;
   	z-index: 50;
-  	font-family: verdana;
-  	font-size: 26px;
+  	font-size: 23px;
   	font-weight: bold;
   	color: #000030;
   	padding-left: 15px;
@@ -1050,7 +1046,7 @@
   .abbwal {
   	position: absolute;
   	left: 0; top: 3px; right: 0;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 13px;
   	color: #603000;
   }
@@ -1061,7 +1057,7 @@
   .abbname {
   	position: absolute;
   	left: 0; top: 0; width: 100%;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 16px;
   	padding: 3px;
   	color: #000000;
@@ -1084,7 +1080,7 @@
   	left: 0px; right: 0px; bottom: 42px;
   	width: 100%; height: 26px;
   	padding: 3px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 22px;
   	color: #000050;
   	border: 1px solid black;
@@ -1094,7 +1090,7 @@
   	left: 0px; right: 0px; bottom: 0px;
   	width: 100%; height: 26px;
   	padding: 3px;
-  	font-family: "Lucida Console";
+  	font-family: "Courier New";
   	font-size: 22px;
   	color: #000050;
   	border: 1px solid black;
@@ -1103,18 +1099,17 @@
   	position: absolute;
   	left: 0; width: 170px;
   	text-align: right;
-  	font-size: 16px;
+  	font-size: 15px;
   }
   #aeadd {
   	position: absolute;
   	right: 50px; bottom: 90px;
-  	font-size: 18px;
+  	font-size: 17px;
   }
   #aeerr {
   	position: absolute;
   	left: 190px; bottom: 65px;
-  	font-family: Verdana;
-  	font-size: 16px;
+  	font-size: 17px;
   	color: red;
   	font-weight: bold;
   }

@@ -23,7 +23,7 @@ Macintosh Install Pack (perl included):
   https://pttp.factorialcoin.nl//PTTP_0102_Macintosh.rar
 
 
-#GitHub Install:
+GitHub Install:
 
 Download the Domero Perl base from https://github.com/FactorialCoin/base/
 

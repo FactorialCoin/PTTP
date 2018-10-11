@@ -10,14 +10,14 @@ PTTP Blockchain Explorer: https://pttp.factorialcoin.nl:9613/
 <hr>
 Download Perl & PTTP Install:
 
-Windows Install Pack (perl included):
-<br>(zip) https://pttp.factorialcoin.nl//PTTP_0102_Windows.zip
+Windows Install Pack:
+<br>https://factorialcoin.nl/pttp/download
 
-Linux Install Pack (perl included):
-<br>(tgz) https://pttp.factorialcoin.nl//PTTP_0102_Linux.tar.gz
+Linux Install Pack:
+<br>https://factorialcoin.nl/pttp/download/linux
 
-Macintosh Install Pack (perl included):
-<br>(rar) https://pttp.factorialcoin.nl//PTTP_0102_Macintosh.rar
+Macintosh Install Pack:
+<br>https://factorialcoin.nl/pttp/download/macintosh
 
 <hr>
 GitHub Install:

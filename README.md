@@ -8,7 +8,7 @@ You can earn PTTP by mining it or running a node in which case you will get part
 PTTP Blockchain Explorer: https://pttp.factorialcoin.nl:9613/
 
 <hr>
-Download Perl & PTTP Install:
+Download PTTP Install:
 
 Windows Install Pack:
 <br>https://factorialcoin.nl/pttp/download

@@ -5,7 +5,7 @@ It allows to participate in one of the fastest and most secure Crypto Currencies
 You can earn PTTP by mining it or running a node in which case you will get part of the fees payed over transactions.
 
 <hr>
-PTTP Blockchain Explorer: https://pttp.factorialcoin.nl:9613/
+PTTP Blockchain Explorer: https://factorialcoin.nl:9613/
 
 <hr>
 Download PTTP Install:

@@ -1,0 +1,1 @@
+#!/bin/shif [ ! -f installed.pttp ]; then  ./PTTP_Setup.commandficd minerperl pttpminer.cgicd ..

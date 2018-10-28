@@ -22,14 +22,12 @@ Macintosh Install Pack:
 <hr>
 GitHub Install:
 
-Download the Domero Perl-Base from https://github.com/FactorialCoin/base/ repository
-<br>(zip) https://github.com/FactorialCoin/base/archive/master.zip
-<br>and put perl/site/lib into your Perl's /site/lib directory.
-
-Download the PTTP Wallet and/or Node from the github repository and start them with perl. 
+To download the PTTP Wallet, Miner and/or Node Run and Install scripts from the github repository:
 <br>(zip) https://github.com/FactorialCoin/PTTP/archive/master.zip
 
-Only the Installer containce the Wallet and Node start example scripts for all available Os's.
+To download the Domero Perl-Base from https://github.com/FactorialCoin/base/ repository
+<br>(zip) https://github.com/FactorialCoin/base/archive/master.zip
+<br>put perl/site/lib into your Perl's /site/lib directory.
 
 <hr>
 

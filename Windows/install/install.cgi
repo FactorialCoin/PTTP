@@ -4,17 +4,17 @@ print <<EOT;
 
 Welcome to
 
-  FFFFFF    CCCCC     CCCCC
-  F        C         C            Factorial Coin v1.0
-  FFF      C         C
-  F        C         C             INSTALLATION
-  F         CCCCC     CCCCC
+  PPPPP   TTTTTTT  TTTTTTT   PPPPP
+  P    P     T        T      P    P     Power to the People Coin v1.21
+  PPPPP      T        T      PPPPP
+  P          T        T      P                  INSTALLATION
+  P          T        T      P
 
 EOT
 
 my $revslash=0;
 my $cmd;
-my $source="modules/*";
+my $source="../modules/*";
 my $target; 
 
 print "Your operating system: ";
@@ -53,4 +53,4 @@ print "Copying files:\n";
 system "$cmd $source $target";
 print "\nDone.\n\n"
 
-# EOF install (Chaosje 2018)
+# EOF PTTP install (Chaosje 2018)

@@ -5,7 +5,7 @@ echo Please install Perl first
 goto :end
 :installed
 echo Installing dependencies for Perl ..
-cmd /R "cpan install Time::HiRes JSON Crypt::Ed25519 URL::Encode Browser::Open Gzip::Faster Digest::SHA"
+cmd /R "cpan install Time::HiRes JSON Crypt::Ed25519 URL::Encode Browser::Open Gzip::Faster Digest::SHA1"
 cd install
 cmd /R "perl install.cgi"
 cd ..

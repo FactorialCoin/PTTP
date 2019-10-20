@@ -54,6 +54,8 @@
 #  * returns the content of a file, or a part of it, without it staying opened.
 # append(file,content)
 #  * appends content to file.
+# crapp(file,content,nonil,mode)
+#  * if file exists, appends content to file, otherwise create file.
 # copy(source_filename,destination_filename,[no_overwrite])
 #  * copies a file, will not overwrite is flag is set.
 # $handle=readfiles(directory,extlist,recursive,verbose)
@@ -73,10 +75,10 @@ use warnings;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
-$VERSION     = '1.10';
+$VERSION     = '1.12';
 @ISA         = qw(Exporter);
 @EXPORT      = ();
-@EXPORT_OK   = qw(open close seek tell read write insert extract readlines filesize truncate create newfile lock unlock locked changeowner content append copy makedir closeall readfiles readdirs numfiles getfile);
+@EXPORT_OK   = qw(open close seek tell read write insert extract readlines filesize truncate create crapp newfile lock unlock locked changeowner content append copy makedir closeall readfiles readdirs numfiles getfile);
 
 use Fcntl qw (:DEFAULT :flock);
 use gerr qw(error);
@@ -216,6 +218,10 @@ sub append {
   my $fh=gfio::open($filename,'a'); 
   if (ref($content) eq 'SCALAR') { $fh->write($content) } else { $fh->write(\$content) }
   $fh->close
+}
+
+sub crapp {
+  if (!-e $_[0]) { gfio::create(@_) } else { gfio::append(@_) }
 }
 
 sub content {
@@ -581,8 +587,9 @@ sub numfiles {
 }
 
 sub getfile {
-  my ($self,$num) = @_;  
-  if (!$num || ($num<1) || ($num>$self->numfiles)) {
+  my ($self,$num) = @_;
+  if (!$num) { $num=0 }
+  if (($num<1) || ($num>$self->numfiles)) {
     error("GFIO.GetFile: File '$num' is invalid (must be between 1 and ".$self->numfiles.", reading '".$self->{dir}."')")
   }
   my $fi=$self->{list}[$num-1];
